@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Поиск по таблице Supabase</title>
+    <title>Поиск по сводкам</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Поиск по данным из Supabase</h1>
-    <input type="text" id="searchInput" placeholder="Введите для поиска...">
+    <h1>Поиск по базе данных</h1>
+    <input type="text" id="searchInput" placeholder="Введите текст для поиска в сводках AI...">
     <table id="dataTable">
         <thead>
             <tr>
-                <th>ID</th>
-                <th>Имя</th>
-                <th>Город</th>
+                <th>Название</th>
+                <th>Сводка AI (ai_reviews_summary)</th>
             </tr>
         </thead>
         <tbody id="tableBody">
+            <!-- Данные из Supabase будут загружены сюда -->
         </tbody>
     </table>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
