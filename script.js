@@ -8,14 +8,14 @@ const searchInput = document.getElementById('searchInput');
 let allData = [];
 
 async function fetchData() {
-    // !!! ВАЖНО: Замените 'имя_вашей_таблицы' на реальное имя вашей таблицы в Supabase
+    // Имя вашей таблицы было изменено здесь на 'search_content'
     const { data, error } = await supabase
-        .from('имя_вашей_таблицы') 
+        .from('search_content') 
         .select('*');
 
     if (error) {
         console.error('Ошибка при получении данных:', error);
-        tableBody.innerHTML = `<tr><td colspan="3">Ошибка при загрузке данных: ${error.message}</td></tr>`;
+        tableBody.innerHTML = `<tr><td colspan="4">Ошибка при загрузке данных: ${error.message}</td></tr>`;
         return;
     }
     allData = data;
@@ -25,27 +25,37 @@ async function fetchData() {
 function renderTable(data) {
     tableBody.innerHTML = '';
     if (data.length === 0) {
-        tableBody.innerHTML = '<tr><td colspan="3">Ничего не найдено.</td></tr>';
+        tableBody.innerHTML = '<tr><td colspan="4">Ничего не найдено.</td></tr>';
         return;
     }
     data.forEach(item => {
         const row = document.createElement('tr');
-        // !!! ВАЖНО: Замените 'id', 'name' и 'city' на реальные имена столбцов вашей таблицы
+        // Вставляем данные из ваших столбцов: name, description, formatted_address, tags
         row.innerHTML = `
-            <td>${item.id}</td>
-            <td>${item.name}</td>
-            <td>${item.city}</td>
+            <td>${item.name || ''}</td>
+            <td>${item.description || ''}</td>
+            <td>${item.formatted_address || ''}</td>
+            <td>${(item.tags || []).join(', ')}</td>
         `;
         tableBody.appendChild(row);
     });
 }
 
-searchInput.addEventListener('keyup', () => {
+searchInput.addEventListener('input', () => {
     const searchTerm = searchInput.value.toLowerCase();
+
+    if (!searchTerm) {
+        renderTable(allData);
+        return;
+    }
+
     const filteredData = allData.filter(item => {
-        // Убедитесь, что эти поля существуют в вашей таблице и по ним можно искать
-        return item.name.toLowerCase().includes(searchTerm) || 
-               item.city.toLowerCase().includes(searchTerm);
+        // Поиск по названию, описанию и тегам
+        const nameMatch = item.name && item.name.toLowerCase().includes(searchTerm);
+        const descriptionMatch = item.description && item.description.toLowerCase().includes(searchTerm);
+        const tagsMatch = item.tags && item.tags.join(' ').toLowerCase().includes(searchTerm);
+        
+        return nameMatch || descriptionMatch || tagsMatch;
     });
     renderTable(filteredData);
 });
