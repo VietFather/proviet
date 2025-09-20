@@ -2395,6 +2395,45 @@ a:hover {
   color: #333;
 }
 
+/* ---------- Удобное чтение: шрифты, кнопки, меню ---------- */
+
+/* Основной текст */
+body {
+  font-size: 1.05rem;     /* ~17px вместо 14–15px */
+  line-height: 1.65;      /* комфортное расстояние между строками */
+  color: #222;            /* насыщенный цвет текста */
+}
+
+/* Заголовки */
+h1 { font-size: 2.2rem; font-weight: 700; } /* ~35px */
+h2 { font-size: 1.8rem; font-weight: 700; } /* ~29px */
+h3 { font-size: 1.4rem; font-weight: 600; } /* ~22px */
+h4, h5, h6 { font-weight: 600; }
+
+/* Кнопки */
+.button, a.button {
+  font-size: 1.1rem;       /* крупнее текст */
+  font-weight: 600;        /* плотнее начертание */
+  padding: 0.9em 1.8em;    /* больше "воздуха" вокруг текста */
+  border-radius: 8px;      /* мягкие углы */
+  opacity: 1 !important;   /* убираем полупрозрачность */
+}
+
+/* Кнопка при наведении */
+.button:hover, a.button:hover {
+  transform: translateY(-2px); /* лёгкий эффект */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+/* Ссылки в меню (sidebar) */
+#menu a {
+  font-size: 1rem;         /* ~16px */
+  font-weight: 500;
+  opacity: 1 !important;   /* убираем серую прозрачность */
+}
+
+
+
 
 
 
