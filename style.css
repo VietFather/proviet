@@ -1,22 +1,40 @@
+/* ---------- Исправление тонких и полупрозрачных шрифтов ---------- */
+
+/* Базовый текст */
 body {
-    font-family: sans-serif;
-    margin: 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500; /* вместо 300 */
+  color: #222;      /* убираем rgba, делаем насыщенный */
 }
-#searchInput {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    box-sizing: border-box;
+
+/* Заголовки */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700; /* более жирные */
+  color: #111;      /* более контрастные */
 }
-table {
-    width: 100%;
-    border-collapse: collapse;
+
+/* Ссылки */
+a {
+  color: #0066cc;       /* вместо полупрозрачного */
+  opacity: 1 !important;
 }
-th, td {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
+a:hover {
+  color: #004999;       /* тёмнее при наведении */
 }
-th {
-    background-color: #f2f2f2;
+
+/* Кнопки */
+.button, a.button {
+  font-weight: 600;
+  opacity: 1 !important;
+  color: #fff !important;
+  background-color: #e63946; /* яркий красный */
+}
+.button:hover {
+  background-color: #d62828;
+}
+
+/* Иконки */
+.icon {
+  opacity: 1 !important;
+  color: #333;
 }
