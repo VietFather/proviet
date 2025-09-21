@@ -1,0 +1,40 @@
+/* ---------- Исправление тонких и полупрозрачных шрифтов ---------- */
+
+/* Базовый текст */
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500; /* вместо 300 */
+  color: #222;      /* убираем rgba, делаем насыщенный */
+}
+
+/* Заголовки */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700; /* более жирные */
+  color: #111;      /* более контрастные */
+}
+
+/* Ссылки */
+a {
+  color: #0066cc;       /* вместо полупрозрачного */
+  opacity: 1 !important;
+}
+a:hover {
+  color: #004999;       /* тёмнее при наведении */
+}
+
+/* Кнопки */
+.button, a.button {
+  font-weight: 600;
+  opacity: 1 !important;
+  color: #fff !important;
+  background-color: #e63946; /* яркий красный */
+}
+.button:hover {
+  background-color: #d62828;
+}
+
+/* Иконки */
+.icon {
+  opacity: 1 !important;
+  color: #333;
+}
